@@ -1,7 +1,10 @@
-function getAge(birthYear, currentYear) {
+/**before */
+/*function getAge(birthYear, currentYear) {
   return currentYear - birthYear;
 }
+module.exports.getAge = getAge;*/
 
-const age = getAge(1972, 2022);
-console.log('The age constant is:' + age);
-module.exports.getAge = getAge;
+/*after optimized code */
+export const getAge = (birthYear , currentYear) => currentYear - birthYear;
+
+
