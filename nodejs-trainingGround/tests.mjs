@@ -55,4 +55,18 @@ describe('age classifier', () => {
     // assert
     assert.equal(result, "old");
   });
+  it('But 50 - that is prime age, my friend. PRIME. AGE.', () => {
+    //arrange
+    //act
+    const result = getAgeGroup(50);
+    // assert
+    assert.equal(result, "prime");
+  });
+  it("Age 0 can't be negative", () => {
+    //arrange
+    //act
+    const result = getAgeGroup(-1);
+    // assert
+    assert.equal(result, "Age can't be negative");
+  });
 });
