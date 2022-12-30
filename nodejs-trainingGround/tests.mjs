@@ -207,6 +207,16 @@ describe('constants and variables', () =>{
     assert.equal(names.length,4);
     assert.equal(names[3], "Arvid");
   });
-  
+  it('removing elements from array with pop',() => {
+    // arrange
+    const names = ["Marcus", "Eliza", "Obaid","Arvid"];
+
+    // act
+    names.pop();
+
+    // assert
+    assert.equal(names.length, 3);
+    assert.equal(names[3], undefined);
+  });
 
 })
