@@ -113,4 +113,52 @@ describe('constants and variables', () =>{
     assert.equal(null, isCatAlive);
     isCatAlive = peekIntoTheBox();
   });
+  it('array keep values', () => {
+    // arrange
+    const array1 = [1,2,3,4];
+    const array2 = ["Marcus", "Eliza", "Obaid"];
+    const array3 = ["Marcus",49, true];
+  });
+  it('getting elements out of arrays', () => {
+    // arrange
+    const names = ["Marcus","Eliza","Obaid"];
+
+    // act
+    const firstElement = names[0];
+    const secondElement = names[1];
+
+    const length = names.length;
+    const indexLastElement= names.lastIndexOf("Obaid");
+    const lastElement = names[names.length-1];
+    // assert
+    assert.equal(firstElement, "Marcus");
+    assert.equal(secondElement,"Eliza");
+    assert.equal(lastElement,"Obaid");
+    assert.equal(length,3);
+    assert.equal(indexLastElement,2);
+  });
+  it('while-loops just keeps going unless we stop them', () => {
+    // arrange
+    let counter = 0;
+
+    // act
+    while (counter < 2) {
+      console.log(`counter is now'${counter}'`);
+
+      counter ++;
+    }
+  });
+  it('loop through an array whith while', () => {
+    // arrange
+    let index = 0;
+    const names = ["Marcus", "Eliza", "Obaid"];
+
+    // act
+    while(index < names.length) {
+      console.log(`Index is now '${index}'`);
+      console.log(`Curent element is'${names[index]}'`);
+      index ++;
+    }
+
+  });
 })
