@@ -244,4 +244,40 @@ describe('constants and variables', () =>{
     assert.equal(names[3], undefined);
     assert.equal(names[0],"Eliza");
   });
+  it('adding elements to an immutable array', () => {
+     // arrange
+     const names = ["Marcus", "Eliza", "Obaid"];
+     assert.equal(names.length,3);
+
+     // act
+     const newNames = [...names,"Arvid"];
+
+     // assert
+     assert.equal(names.length, 3);
+     assert.equal(newNames.length, 4);
+    });
+  it('filter an array - mutable for every element >10', () => {
+    // arrange
+    const numbers = [10, 23, 1, 33, 8, 12];
+
+    // act
+    for(let i = 0; i < numbers.length; i++) {
+      if(numbers[i]>10) {
+        numbers.splice(i,1);
+      }
+    }
+    // assert
+    assert.equal(numbers.length,3);
+  });
+  it('filter an array - immutable for every element >10', () => {
+    // arrange
+    const numbers = [10, 23, 1, 33, 8, 12];
+
+    // act
+    const lowNumbers = numbers.filter(x => x > 10);
+    // assert
+    assert.equal(lowNumbers.length,3);
+  });
+
+
 })
