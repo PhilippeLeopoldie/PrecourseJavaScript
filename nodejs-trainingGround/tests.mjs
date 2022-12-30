@@ -195,5 +195,18 @@ describe('constants and variables', () =>{
       console.log(`if you are born in '${birth}' you are: '${getAge(birth,currentYear)}' in '${currentYear}'`)
     });
   });
+  it('adding elements to array with push', () => {
+    // arrange
+    const names = ["Marcus", "Eliza", "Obaid"];
+    assert.equal(names.length,3);
+
+    // act
+    names.push("Arvid");
+
+    // arrange
+    assert.equal(names.length,4);
+    assert.equal(names[3], "Arvid");
+  });
+  
 
 })
