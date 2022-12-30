@@ -218,5 +218,30 @@ describe('constants and variables', () =>{
     assert.equal(names.length, 3);
     assert.equal(names[3], undefined);
   });
+  it('removing the last element from array using splice', () => {
+    // arrange
+    const names = ["Marcus", "Eliza", "Obaid","Arvid"];
+    assert.equal(names.length,4);
 
+    // act
+    names.splice(names.length-1,1);
+
+    // assert
+    assert.equal(names.length,3);
+    assert.equal(names[3], undefined);
+    assert.equal(names[names.length-1],"Obaid");
+  });
+  it('removing the first element from array using splice', () => {
+    // arrange
+    const names = ["Marcus", "Eliza", "Obaid","Arvid"];
+    assert.equal(names.length,4);
+
+    // act
+    names.splice(0,1);
+
+    // assert
+    assert.equal(names.length,3);
+    assert.equal(names[3], undefined);
+    assert.equal(names[0],"Eliza");
+  });
 })
