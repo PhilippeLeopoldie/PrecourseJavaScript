@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import  assert  from 'assert';
+
 import { getAge,getAgeGroup } from './index.mjs';
 
 describe('age calculator', () => {
@@ -159,6 +160,40 @@ describe('constants and variables', () =>{
       console.log(`Curent element is'${names[index]}'`);
       index ++;
     }
-
   });
+  it('loop through an array with for', () => {
+    // arrange
+    const names =["Marcus","Eliza","Obaid"];
+    // act
+    for( let i = 0; i < names.length; i++) {
+      console.log(`Index from for loop is now '${i}'`);
+      console.log(`Curent element from for loop'${names[i]}'`);
+    }
+  });
+  it('calling getAge for loop for each age', () =>{
+    // arrange
+    const currentYear = 2022;
+    const birthYear = [1972, 2022, 1980];
+
+    // act
+    let age = null;
+
+    for(let i = 0; i < birthYear.length; i++) {
+      const age =getAge(birthYear[i],currentYear)
+      console.log(`if you are born in '${birthYear[i]}' you are: '${age}' in '${currentYear}'`)
+    }
+  });
+  it('calling getAge forEach for each age', () =>{
+    // arrange
+    const currentYear = 2022;
+    const birthYear = [1972, 2022, 1980];
+
+    // act
+    let age = null;
+
+    birthYear.forEach(birth => {
+      console.log(`if you are born in '${birth}' you are: '${getAge(birth,currentYear)}' in '${currentYear}'`)
+    });
+  });
+
 })
