@@ -392,4 +392,5 @@ describe('object are for building things', () => {
     assert.equal(people[1].person2.favoriteMovie[1].title,'title2');
     assert.equal(people[1].person2.favoriteMovie[1].actors[2],'actor8');
   });
+  
 });
