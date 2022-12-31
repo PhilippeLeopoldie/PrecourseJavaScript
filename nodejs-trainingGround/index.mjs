@@ -31,4 +31,10 @@ export const getAgeGroup = (Age) => {
 export const getAgeForPerson=(person, currentYear) => {
   return currentYear - person.birthYear;
 }
+export const division = (number1,number2) => {
+  if(number2 === 0) {
+    throw new Error('Division with zero is impossible');
+  }
+  return number1 / number2;
+};
 
