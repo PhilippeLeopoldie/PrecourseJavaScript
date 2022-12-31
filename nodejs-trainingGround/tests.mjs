@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import  assert  from 'assert';
 
-import { getAge,getAgeGroup } from './index.mjs';
+import { getAge, getAgeGroup, getAgeForPerson } from './index.mjs';
 
 describe('age calculator', () => {
   it('someone born 1972 is 50 2022', () => {
@@ -82,7 +82,7 @@ describe('age classifier', () => {
 describe('constants and variables', () =>{
   it.skip('const means constant', () => {
     const aNumber = 1;
-    aNumber = 2;
+    //aNumber = 2;
   });
   it('you can change a let variable', () => {
     // arrange
@@ -278,6 +278,118 @@ describe('constants and variables', () =>{
     // assert
     assert.equal(lowNumbers.length,3);
   });
-
-
-})
+});
+describe('object are for building things', () => {
+  it('our first object - a human', ()=> {
+    // act
+    const person= {
+      name: "Marcus",
+      birthYear: 1972,
+      isTeacher: true
+    };
+    // assert
+    assert.equal(person.name, 'Marcus');
+    assert.equal(person.birthYear, 1972);
+    assert.equal(person.isTeacher, true)
+  });
+  it('get age for person', () => {
+    // arrange
+    const currentYear = 2022;
+    const person = {
+      name: 'Marcus',
+      birthYear: 1972,
+      isTeacher: true
+    };
+    // act
+    const age = getAgeForPerson(person, currentYear);
+    // assert
+    assert.equal(age, 50);
+  });
+  it('a person with array of favorit film titles', () => {
+    // arrange
+    const person = {
+      name: 'phil',
+      favoriteFilm: ['film1','film2','film3']
+    };
+    // assert
+    assert.equal(person.favoriteFilm.length, 3);
+    assert.equal(person.favoriteFilm[0],'film1');
+    assert.equal(person.favoriteFilm[1], 'film2');
+    assert.equal(person.favoriteFilm[person.favoriteFilm.length-1], 'film3');
+  });
+  it('a person has a list of favorite movies with releaseYears', () =>{
+    // act
+    const person = {
+      name: 'Marcus',
+      favoriteFilm: [
+        {
+          title: 'film1',
+          releaseYear: 2001
+        },
+        {
+          title: 'film2',
+          releaseYear: 2002
+        },
+        {
+          title: 'film3',
+          releaseYear: 2003
+        }
+      ],
+    };
+    // assert
+    assert.equal(person.favoriteFilm.length,3);
+    assert.equal(person.favoriteFilm[0].title, 'film1');
+    assert.equal(person.favoriteFilm[2].releaseYear, 2003);
+  });
+  it(' people is a list of person who has a list of movies which has a list of actors', () =>{
+    // act
+    const people = [
+      {
+        person1:
+        {
+          name:'phil1',
+          favoriteMovie:[
+            {
+              title:'title1',
+              actors:['actor1','actor2','actor3'],
+            }
+          ]
+        },
+      },
+      {
+        person2:
+        {
+          name:'phil2',
+          favoriteMovie:[
+            {
+              title:'title1',
+              actors:['actor1','actor5','actor8'],
+            },
+            {
+              title:'title2',
+              actors:['actor5','actor12','actor8'],
+            },
+          ]
+        },
+      },
+      {
+        person3:
+        {
+          name:'phil3',
+          favoriteMovie:[
+            {
+              title:'title3',
+              actors:['actor5','actor2','actor9'],
+            }
+          ]
+        },
+      },
+    ]
+    // assert
+    assert.equal(people.length, 3);
+    assert.equal(people[0].person1.name, 'phil1');
+    assert.equal(people[1].person2.favoriteMovie.length,2);
+    assert.equal(people[1].person2.favoriteMovie[1].title,'title2');
+    assert.equal(people[1].person2.favoriteMovie[1].actors[2],'actor8');
+  });
+});

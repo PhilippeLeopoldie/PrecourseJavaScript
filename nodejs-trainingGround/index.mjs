@@ -28,4 +28,7 @@ export const getAgeGroup = (Age) => {
   return "old";
 }
 
+export const getAgeForPerson=(person, currentYear) => {
+  return currentYear - person.birthYear;
+}
 
