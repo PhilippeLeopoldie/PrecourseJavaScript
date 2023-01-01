@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import  assert  from 'assert';
 
-import { getAge, getAgeGroup, getAgeForPerson, division } from './index.mjs';
+import { getAge, getAgeGroup, getAgeForPerson, division, addWithLog } from './index.mjs';
 
 describe('age calculator', () => {
   it('someone born 1972 is 50 2022', () => {
@@ -392,23 +392,43 @@ describe('object are for building things', () => {
     assert.equal(people[1].person2.favoriteMovie[1].title,'title2');
     assert.equal(people[1].person2.favoriteMovie[1].actors[2],'actor8');
   });
-  describe('exception for when things go awry', () =>{
-    it('division 10/2', () => {
-      // act
-      const result = division(10,2);
-      // assert
-      assert.equal(result,5);
+});
+describe('exception for when things go awry', () =>{
+  it('division 10/2', () => {
+    // act
+    const result = division(10,2);
+    // assert
+    assert.equal(result,5);
+  });
+  it('4 divided with is ???', () => {
+    // arrange
+    try{
+    // act
+    const result = division(4,0);
+    }catch (error){
+    // assert
+    assert.notEqual(error, undefined);
+    assert.equal(error.message, 'Division with zero is impossible');
+    }
+  });
+});
+describe('callbacks', () => {
+  it('adding with logger', () => {
+    // arrange
+    const logThis2 = (message) => {
+      console.log(message);
+    }
+    // act
+    const result = addWithLog(1,89,logThis2);
+    // assert
+    assert.equal(result,90);
+  });
+  it('adding with inline logger', () => {
+    // act
+    const result = addWithLog(1,89,(message) => {
+      console.log(message);
     });
-    it('4 divided with is ???', () => {
-      // arrange
-      try{
-      // act
-      const result = division(4,0);
-      }catch (error){
-      // assert
-      assert.notEqual(error, undefined);
-      assert.equal(error.message, 'Division with zero is impossible');
-      }
-    });
+    // assert
+    assert.equal(result, 90);
   });
 });

@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.1",

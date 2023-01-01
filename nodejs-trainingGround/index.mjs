@@ -38,3 +38,8 @@ export const division = (number1,number2) => {
   return number1 / number2;
 };
 
+export const addWithLog = (number1, number2, logger) => {
+  console.log(logger.toString());
+  logger(`about to '${number1}' + '${number2}'`);
+  return number1 + number2;
+}
